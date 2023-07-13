@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./App.scss";
 import { Masa, SupportedNetworks } from "@masa-finance/masa-sdk";
 
@@ -17,44 +17,47 @@ interface TokenInfo {
 const App = () => {
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
 
-  useEffect(() => {
-    const loadTokens = async () => {
-      const tempTokens: TokenInfo[] = [];
+  const loadTokens = useCallback(async () => {
+    const tempTokens: TokenInfo[] = [];
 
-      for (const tokensIndex in Tokens) {
-        const tokensAddresses = Tokens[tokensIndex];
-        const network = SupportedNetworks[tokensIndex];
+    for (const tokensIndex in Tokens) {
+      const tokensAddresses = Tokens[tokensIndex];
+      const network = SupportedNetworks[tokensIndex];
 
-        const masa = await Masa.create({
-          signer: new VoidSigner(
-            constants.AddressZero,
-            new providers.JsonRpcProvider(network.rpcUrls[0])
-          ),
+      const masa = await Masa.create({
+        signer: new VoidSigner(
+          constants.AddressZero,
+          new providers.JsonRpcProvider(network.rpcUrls[0])
+        ),
+      });
+
+      for (const tokenAddress of tokensAddresses) {
+        const { contract } = await masa.sbt.connect(tokenAddress);
+
+        const [totalSupply, name] = await Promise.all([
+          contract.totalSupply(),
+          contract.name(),
+        ]);
+
+        tempTokens.push({
+          tokenAddress,
+          networkName: tokensIndex,
+          totalSupply: totalSupply.toString(),
+          name,
+          explorerUrl: `${network.blockExplorerUrls[0]}/token/${tokenAddress}`,
         });
-
-        for (const tokenAddress of tokensAddresses) {
-          const { contract } = await masa.sbt.connect(tokenAddress);
-
-          const [totalSupply, name] = await Promise.all([
-            contract.totalSupply(),
-            contract.name(),
-          ]);
-
-          tempTokens.push({
-            tokenAddress,
-            networkName: tokensIndex,
-            totalSupply: totalSupply.toString(),
-            name,
-            explorerUrl: `${network.blockExplorerUrls[0]}/token/${tokenAddress}`,
-          });
-        }
       }
+    }
 
-      await setTokens(tempTokens);
-    };
-
-    void loadTokens();
+    await setTokens(tempTokens);
   }, [setTokens]);
+
+  useEffect(() => {
+    void loadTokens();
+
+    // reload every 5 minutes
+    setTimeout(() => loadTokens(), 5 * 60 * 1000);
+  }, [loadTokens]);
 
   return (
     <div className="App">
