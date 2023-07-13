@@ -56,7 +56,7 @@ const App = () => {
     void loadTokens();
 
     // reload every 5 minutes
-    setTimeout(() => loadTokens(), 5 * 60 * 1000);
+    setInterval(() => loadTokens(), 5 * 60 * 1000);
   }, [loadTokens]);
 
   return (
