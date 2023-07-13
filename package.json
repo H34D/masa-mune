@@ -28,7 +28,6 @@
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject"
   },
-  "homepage": "masa-mune/build",
   "eslintConfig": {
     "extends": [
       "react-app",
