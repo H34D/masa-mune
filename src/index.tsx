@@ -13,7 +13,7 @@ if (node) {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/masa-mune",
       element: <App />,
     },
   ]);
