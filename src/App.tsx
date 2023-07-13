@@ -9,7 +9,7 @@ import { constants, providers, VoidSigner } from "ethers";
 interface TokenInfo {
   tokenAddress: string;
   networkName: string;
-  totalSupply: string;
+  totalSupply: number;
   name: string;
   explorerUrl: string;
 }
@@ -42,7 +42,7 @@ const App = () => {
         tempTokens.push({
           tokenAddress,
           networkName: tokensIndex,
-          totalSupply: totalSupply.toString(),
+          totalSupply: totalSupply.toNumber(),
           name,
           explorerUrl: `${network.blockExplorerUrls[0]}/token/${tokenAddress}`,
         });
@@ -70,6 +70,14 @@ const App = () => {
           }
         />
       </header>
+      <div className={"App-link"}>
+        {tokens.length > 0
+          ? `Total: ${tokens
+              .map((t) => t.totalSupply)
+              .reduce((a, b) => a + b, 0)
+              .toLocaleString()} SBT`
+          : undefined}
+      </div>
       <div>
         {tokens.map((token, index) => {
           return (
@@ -89,7 +97,7 @@ const App = () => {
               >
                 <div>{token.networkName}</div>
                 <div>
-                  {token.name}: {token.totalSupply}
+                  {token.name}: {token.totalSupply.toLocaleString()}
                 </div>
               </a>
             </div>
