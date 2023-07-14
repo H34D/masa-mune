@@ -11,6 +11,7 @@ interface TokenInfo {
   networkName: string;
   totalSupply: number;
   name: string;
+  symbol: string;
   explorerUrl: string;
 }
 
@@ -34,9 +35,10 @@ const App = () => {
       for (const tokenAddress of tokensAddresses) {
         const { contract } = await masa.sbt.connect(tokenAddress);
 
-        const [totalSupply, name] = await Promise.all([
+        const [totalSupply, name, symbol] = await Promise.all([
           contract.totalSupply(),
           contract.name(),
+          contract.symbol(),
         ]);
 
         tempTokens.push({
@@ -44,12 +46,12 @@ const App = () => {
           networkName: tokensIndex,
           totalSupply: totalSupply.toNumber(),
           name,
+          symbol,
           explorerUrl: `${network.blockExplorerUrls[0]}/token/${tokenAddress}`,
         });
+        await setTokens(tempTokens);
       }
     }
-
-    await setTokens(tempTokens);
   }, [setTokens]);
 
   useEffect(() => {
@@ -97,7 +99,8 @@ const App = () => {
               >
                 <div>{token.networkName}</div>
                 <div>
-                  {token.name}: {token.totalSupply.toLocaleString()}
+                  {token.name} ({token.symbol}):{" "}
+                  {token.totalSupply.toLocaleString()}
                 </div>
               </a>
             </div>
