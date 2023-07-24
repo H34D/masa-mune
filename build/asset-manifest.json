@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/masa-mune/static/css/main.ff14df45.css",
-    "main.js": "/masa-mune/static/js/main.efa4cc99.js",
+    "main.js": "/masa-mune/static/js/main.2b11e5aa.js",
     "static/js/841.1b4a0c08.chunk.js": "/masa-mune/static/js/841.1b4a0c08.chunk.js",
     "static/js/888.3ec69648.chunk.js": "/masa-mune/static/js/888.3ec69648.chunk.js",
     "static/js/642.2af6e17d.chunk.js": "/masa-mune/static/js/642.2af6e17d.chunk.js",
@@ -41,7 +41,7 @@
     "static/js/459.e77ed04e.chunk.js": "/masa-mune/static/js/459.e77ed04e.chunk.js",
     "static/js/741.71ad6e90.chunk.js": "/masa-mune/static/js/741.71ad6e90.chunk.js",
     "static/js/687.2f8a637c.chunk.js": "/masa-mune/static/js/687.2f8a637c.chunk.js",
-    "static/js/89.07d1eab0.chunk.js": "/masa-mune/static/js/89.07d1eab0.chunk.js",
+    "static/js/609.d7d9a3b2.chunk.js": "/masa-mune/static/js/609.d7d9a3b2.chunk.js",
     "static/media/Inter-Bold.ttf": "/masa-mune/static/media/Inter-Bold.1eca2d329458b92342aa.1eca2d329458b92342aa.ttf",
     "static/media/Inter-Medium.ttf": "/masa-mune/static/media/Inter-Medium.4ebf1acf62f447ea2f0d.4ebf1acf62f447ea2f0d.ttf",
     "static/media/Inter-Light.ttf": "/masa-mune/static/media/Inter-Light.a6cdc9ac687f817dbfb5.a6cdc9ac687f817dbfb5.ttf",
@@ -53,7 +53,7 @@
     "static/media/proximanova-bold-webfont.woff2": "/masa-mune/static/media/proximanova-bold-webfont.67a5122c1036622a0de8.67a5122c1036622a0de8.woff2",
     "index.html": "/masa-mune/index.html",
     "main.ff14df45.css.map": "/masa-mune/static/css/main.ff14df45.css.map",
-    "main.efa4cc99.js.map": "/masa-mune/static/js/main.efa4cc99.js.map",
+    "main.2b11e5aa.js.map": "/masa-mune/static/js/main.2b11e5aa.js.map",
     "841.1b4a0c08.chunk.js.map": "/masa-mune/static/js/841.1b4a0c08.chunk.js.map",
     "888.3ec69648.chunk.js.map": "/masa-mune/static/js/888.3ec69648.chunk.js.map",
     "642.2af6e17d.chunk.js.map": "/masa-mune/static/js/642.2af6e17d.chunk.js.map",
@@ -92,10 +92,10 @@
     "459.e77ed04e.chunk.js.map": "/masa-mune/static/js/459.e77ed04e.chunk.js.map",
     "741.71ad6e90.chunk.js.map": "/masa-mune/static/js/741.71ad6e90.chunk.js.map",
     "687.2f8a637c.chunk.js.map": "/masa-mune/static/js/687.2f8a637c.chunk.js.map",
-    "89.07d1eab0.chunk.js.map": "/masa-mune/static/js/89.07d1eab0.chunk.js.map"
+    "609.d7d9a3b2.chunk.js.map": "/masa-mune/static/js/609.d7d9a3b2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ff14df45.css",
-    "static/js/main.efa4cc99.js"
+    "static/js/main.2b11e5aa.js"
   ]
 }
