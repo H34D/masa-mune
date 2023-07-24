@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./App.scss";
-import { Masa, SupportedNetworks } from "@masa-finance/masa-sdk";
+import { Masa, NetworkName, SupportedNetworks } from "@masa-finance/masa-sdk";
 
 import "@masa-finance/masa-react/dist/css/styles.css";
 import { Tokens } from "./tokens";
@@ -21,15 +21,16 @@ const App = () => {
   const loadTokens = useCallback(async () => {
     const tempTokens: TokenInfo[] = [];
 
-    for (const tokensIndex in Tokens) {
-      const tokensAddresses = Tokens[tokensIndex];
-      const network = SupportedNetworks[tokensIndex];
+    for (const networkName in Tokens) {
+      const tokensAddresses = Tokens[networkName];
+      const network = SupportedNetworks[networkName];
 
-      const masa = await Masa.create({
+      const masa = new Masa({
         signer: new VoidSigner(
           constants.AddressZero,
           new providers.JsonRpcProvider(network.rpcUrls[0]),
         ),
+        networkName: networkName as NetworkName,
       });
 
       for (const tokenAddress of tokensAddresses) {
@@ -43,7 +44,7 @@ const App = () => {
 
         tempTokens.push({
           tokenAddress,
-          networkName: tokensIndex,
+          networkName,
           totalSupply: totalSupply.toNumber(),
           name,
           symbol,
