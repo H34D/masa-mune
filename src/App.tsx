@@ -28,7 +28,7 @@ const App = () => {
       const masa = await Masa.create({
         signer: new VoidSigner(
           constants.AddressZero,
-          new providers.JsonRpcProvider(network.rpcUrls[0])
+          new providers.JsonRpcProvider(network.rpcUrls[0]),
         ),
       });
 
@@ -73,12 +73,60 @@ const App = () => {
         />
       </header>
       <div className={"App-link"}>
-        {tokens.length > 0
-          ? `Total: ${tokens
-              .map((t) => t.totalSupply)
-              .reduce((a, b) => a + b, 0)
-              .toLocaleString()} SBT`
-          : undefined}
+        <div>
+          {tokens.length > 0
+            ? `Ethereum: ${tokens
+                .filter((t) => t.networkName === "ethereum")
+                .map((t) => t.totalSupply)
+                .reduce((a, b) => a + b, 0)
+                .toLocaleString()} SBT`
+            : undefined}
+        </div>
+        <div>
+          {tokens.length > 0
+            ? `Polygon: ${tokens
+                .filter((t) => t.networkName === "polygon")
+                .map((t) => t.totalSupply)
+                .reduce((a, b) => a + b, 0)
+                .toLocaleString()} SBT`
+            : undefined}
+        </div>
+        <div>
+          {tokens.length > 0
+            ? `Celo: ${tokens
+                .filter((t) => t.networkName === "celo")
+                .map((t) => t.totalSupply)
+                .reduce((a, b) => a + b, 0)
+                .toLocaleString()} SBT`
+            : undefined}
+        </div>
+
+        <div>
+          {tokens.length > 0
+            ? `Base: ${tokens
+                .filter((t) => t.networkName === "basegoerli")
+                .map((t) => t.totalSupply)
+                .reduce((a, b) => a + b, 0)
+                .toLocaleString()} SBT`
+            : undefined}
+        </div>
+        <div>
+          {tokens.length > 0
+            ? `BSC: ${tokens
+                .filter((t) => t.networkName === "bsc")
+                .map((t) => t.totalSupply)
+                .reduce((a, b) => a + b, 0)
+                .toLocaleString()} SBT`
+            : undefined}
+        </div>
+        <div>
+          {tokens.length > 0
+            ? `Total: ${tokens
+                .map((t) => t.totalSupply)
+                .reduce((a, b) => a + b, 0)
+                .toLocaleString()} SBT`
+            : undefined}
+        </div>
       </div>
       <div>
         {tokens.map((token, index) => {
