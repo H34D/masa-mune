@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@masa-finance/masa-react": "^3.0.22",
+    "@masa-finance/masa-react": "^3.0.30",
     "antd": "^5.8.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
