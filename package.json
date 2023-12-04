@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@masa-finance/masa-react": "^3.1.4",
-    "antd": "^5.9.0",
+    "antd": "^5.11.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "node-sass": "^9.0.0",
